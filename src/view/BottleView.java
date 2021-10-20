@@ -1,8 +1,7 @@
 package view;
 
 import model.Bottles;
-
-import config.Color;
+import model.Color;
 import config.GlobalConfig;
 
 public class BottleView {
@@ -30,7 +29,7 @@ public class BottleView {
         System.out.println();
         for (int i = 0; i < GlobalConfig.QUANTITY; i++) {
             System.out.print("    ["+ (i + 1) + "]  ");
-            if ((i + 1) <= 9) System.out.print(" ");
+            if (i < 9) System.out.print(" ");
         }
 
         System.out.println("\n");

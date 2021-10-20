@@ -1,6 +1,5 @@
 package model;
 
-import config.Color;
 import config.GlobalConfig;
 
 public class Bottle {

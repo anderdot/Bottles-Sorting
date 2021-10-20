@@ -2,12 +2,13 @@ package controller;
 
 import model.Bottle;
 import model.Bottles;
+import model.Color;
+
 import view.BottleView;
 
 import java.util.Collections;
 import java.util.LinkedList;
 
-import config.Color;
 import config.GlobalConfig;
 
 public class BottleController {
@@ -58,6 +59,6 @@ public class BottleController {
             }
         }
 
-        view.printBottles(model);
+        view.printBottles(model); //arrumar isso
     }
 }

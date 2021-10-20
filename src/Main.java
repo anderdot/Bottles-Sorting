@@ -7,6 +7,6 @@ public class Main {
         Bottles model = new Bottles();
         BottleView view = new BottleView();
         BottleController controller = new BottleController(model, view);
-        controller.FillBottles();
+        controller.FillBottles(); //arrumar isso
     }
 }
