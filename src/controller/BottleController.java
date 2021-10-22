@@ -6,6 +6,7 @@ import model.Color;
 
 import view.BottleView;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -18,6 +19,26 @@ public class BottleController {
     public BottleController(Bottles model, BottleView view) {
         this.model = model;
         this.view = view;
+    }
+
+    public void run() throws IOException {
+        view.gameRules();
+        startGame();
+    }
+
+    private void startGame() {
+        FillBottles();
+        refresh();
+        int inputs[] =  getInputs();
+        System.out.println(inputs[0] + " : " + inputs[1]);
+    }
+
+    private int[] getInputs() {
+        return view.getSelected(model);
+    }
+
+    private void refresh() {
+        view.printBottles(model);
     }
 
     private LinkedList<Color> shuffleColors() {
@@ -58,7 +79,5 @@ public class BottleController {
                 }
             }
         }
-
-        view.printBottles(model); //arrumar isso
     }
 }
