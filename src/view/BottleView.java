@@ -3,25 +3,24 @@ package view;
 import model.Bottles;
 import model.Color;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import config.GlobalConfig;
 
 public class BottleView {
-    public void gameRules() throws IOException {
+    public void gameRules() {
         //Runtime.getRuntime().exec("cls");
         System.out.println();
     }
 
     public int[] getSelected(Bottles model) {
-        System.out.println("Selecione a primeira garrafa:");
+        System.out.print("Mover a garrafa: ");
         int b1 = captureInputs();
 
         //validar se esta vazia (!model.getBottles().get(selected).getIsEmpty())
         //validar se ela ja não esta completa de uma cor
 
-        System.out.println("Selecione a segunda garrafa:");
+        System.out.print("Para: ");
         int b2 = captureInputs();
 
         //validar se não é a b1
@@ -75,6 +74,10 @@ public class BottleView {
         for (int i = 0; i < GlobalConfig.QUANTITY; i++) {
             System.out.print("    ["+ (i + 1) + "]  ");
             if (i < 9) System.out.print(" ");
+        }
+
+        for (int i = 0; i < GlobalConfig.QUANTITY; i++) {
+            System.out.print("[" + bottles.getBottles().get(i).getTopColor().name() + "] ");
         }
 
         System.out.println("\n");
