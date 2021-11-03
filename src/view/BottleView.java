@@ -9,7 +9,7 @@ import config.GlobalConfig;
 
 public class BottleView {
     public void gameRules() {
-        //Runtime.getRuntime().exec("cls");
+        //Runtime.getRuntime().exec("clear");
         System.out.println();
     }
 
@@ -76,9 +76,9 @@ public class BottleView {
             if (i < 9) System.out.print(" ");
         }
 
-        for (int i = 0; i < GlobalConfig.QUANTITY; i++) {
-            System.out.print("[" + bottles.getBottles().get(i).getTopColor().name() + "] ");
-        }
+        // for (int i = 0; i < GlobalConfig.QUANTITY; i++) {
+        //     System.out.print("[" + bottles.getBottles().get(i).getTopColor().name() + "] ");
+        // }
 
         System.out.println("\n");
     }

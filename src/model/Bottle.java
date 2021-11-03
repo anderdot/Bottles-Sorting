@@ -26,7 +26,7 @@ public class Bottle {
         return this.contents;
     }
 
-    public boolean stackUp(Color color) {
+    public boolean pushColor(Color color) {
         if (!isFullWithSameColor) {
             if (!isFull) {
                 return checkBellow(this.topIndex, color);
@@ -52,14 +52,16 @@ public class Bottle {
                 }
             } else {
                 if (contents[i] == color) {
-                    contents[(i - 1)] = color;
-                    topColor = color;
-                    i--;
-                    if (i == 0) {
-                        this.isFull = true;
-                        isFullWithSameColor = checkIfIsFullWithSameColor();
-                    }
-                    topIndex = i;
+                    // while (contents[i] == color) {
+                        contents[(i - 1)] = color;
+                        topColor = color;
+                        i--;
+                        if (i == 0) {
+                            this.isFull = true;
+                            isFullWithSameColor = checkIfIsFullWithSameColor();
+                        }
+                        topIndex = i;
+                    // }
                     return true;
                 } else {
                     return false;
@@ -68,17 +70,7 @@ public class Bottle {
         }
     }
 
-    private boolean checkIfIsFullWithSameColor() {
-        for (Color color : contents) {
-            if (color != topColor) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public boolean unstack() {
+    public boolean popColor() {
         if (isEmpty) {
             return false;
         } else {
@@ -95,6 +87,16 @@ public class Bottle {
                 return true;
             }
         }
+    }
+
+    private boolean checkIfIsFullWithSameColor() {
+        for (Color color : contents) {
+            if (color != topColor) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void setContents(Color[] contents) {

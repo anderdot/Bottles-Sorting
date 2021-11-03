@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import config.GlobalConfig;
 
-public class Bottles{
+public class Bottles {
     private ArrayList<Bottle> bottles = new ArrayList<Bottle>();
 
     public Bottles() {
@@ -79,8 +79,8 @@ public class Bottles{
     }
 
     public void transferColor(int from, int to) {
-        if (this.bottles.get(to).stackUp(this.bottles.get(from).getTopColor())) {
-            bottles.get(from).unstack();
+        if (this.bottles.get(to).pushColor(this.bottles.get(from).getTopColor())) {
+            bottles.get(from).popColor();
         }
     }
 }
