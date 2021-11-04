@@ -1,5 +1,5 @@
 <h3 align="center">🚧 Em construção 🚧</h3>
-<p align="center" style="background-color:#282936">
+<p align="center" style="background-color: #282936;">
     <img src="https://uploaddeimagens.com.br/images/003/519/716/original/imagem_2021-11-03_213439.png" alt="Logo" style=" width: 95%; padding-top: 20px; padding-bottom: 1px;">
 </p>
 
