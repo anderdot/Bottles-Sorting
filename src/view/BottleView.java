@@ -8,8 +8,15 @@ import java.util.Scanner;
 import config.GlobalConfig;
 
 public class BottleView {
+    Scanner scanner = new Scanner(System.in);
+
     public void gameRules() {
         System.out.println("Regras do jogo\n 1. \n");
+    }
+
+    public void leaveMessage() {
+        System.out.println("Vlw");
+        scanner.close();
     }
 
     public int[] getSelected(Bottles model) {
@@ -34,7 +41,6 @@ public class BottleView {
     }
 
     private int captureInputs() {
-        Scanner scanner = new Scanner(System.in);
         int selected;
 
         do {
@@ -74,10 +80,6 @@ public class BottleView {
             System.out.print("    ["+ (i + 1) + "]  ");
             if (i < 9) System.out.print(" ");
         }
-
-        // for (int i = 0; i < GlobalConfig.QUANTITY; i++) {
-        //     System.out.print("[" + bottles.getBottles().get(i).getTopColor().name() + "] ");
-        // }
 
         System.out.println("\n");
     }

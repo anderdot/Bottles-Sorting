@@ -24,6 +24,7 @@ public class BottleController {
         } while (true);
        
         // model.getBottles().get(inputs[1]).stackUp(Color.RED);
+        //view.leaveMessage();
     }
 
     private void resetGame() {
