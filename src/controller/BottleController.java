@@ -14,20 +14,21 @@ public class BottleController {
 
     public void run() {
         view.gameRules();
-        startGame();
-    }
-
-    private void startGame() {
-        model.FillBottles();
-        refresh();
+        resetGame();
+        
         do {
-            int inputs[] =  getInputs();
+            int inputs[] = getInputs();
             // System.out.println(inputs[0] + " : " + inputs[1]);
             model.transferColor(inputs[0], inputs[1]);
             refresh();
         } while (true);
        
         // model.getBottles().get(inputs[1]).stackUp(Color.RED);
+    }
+
+    private void resetGame() {
+        model.FillBottles();
+        refresh();
     }
 
     private int[] getInputs() {

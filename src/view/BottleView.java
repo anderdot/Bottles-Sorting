@@ -9,8 +9,7 @@ import config.GlobalConfig;
 
 public class BottleView {
     public void gameRules() {
-        //Runtime.getRuntime().exec("clear");
-        System.out.println();
+        System.out.println("Regras do jogo\n 1. \n");
     }
 
     public int[] getSelected(Bottles model) {
@@ -57,7 +56,7 @@ public class BottleView {
         System.out.println();
         String leftBottle = Color.RESET + "  " + Color.WHITE + " ";
         String rightBottle = Color.WHITE + " " + Color.RESET + " ";
-        for (int i = 0; i < GlobalConfig.VOLUME; i++) {
+        for (int i = GlobalConfig.VOLUME - 1; i >= 0 ; i--) {
             for (int j = 0; j < GlobalConfig.QUANTITY; j++) {
                 Color[] contents = bottles.getBottles().get(j).getContents();
                 System.out.print(leftBottle + contents[i].toString() + "     " + rightBottle);

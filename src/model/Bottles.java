@@ -10,15 +10,12 @@ public class Bottles {
     private ArrayList<Bottle> bottles = new ArrayList<Bottle>();
 
     public Bottles() {
-        for (int i = 0; i < GlobalConfig.QUANTITY - 2; i++) {
+        for (int i = 0; i < GlobalConfig.QUANTITY; i++) {
             bottles.add(new Bottle());
         }
-
-        bottles.add(new Bottle(true));
-        bottles.add(new Bottle(true));
     }
 
-    private LinkedList<Color> shuffleColors() {
+    private LinkedList<Color> shuffledColors() {
         LinkedList<Color> color = new LinkedList<Color>();
         LinkedList<Color> noRepeat = new LinkedList<Color>();
         int quantity = GlobalConfig.VOLUME * (GlobalConfig.QUANTITY - 2);
@@ -41,37 +38,25 @@ public class Bottles {
     }
 
     public void FillBottles() {
-        LinkedList<Color> randomColors = shuffleColors();
-        for (Bottle bottle : getBottles()) {
-            Color[] contents = bottle.getContents();
-            for (int i = 0; i < GlobalConfig.VOLUME; i++) {
-                if (!bottle.getIsEmpty()) {
-                    contents[i] = randomColors.getFirst();
-                    if (i == 0) {
-                        bottle.setTopColor(randomColors.getFirst());
-                        bottle.setTopIndex(i);
-                        bottle.setIsFull(true);
-                        bottle.setIsEmpty(false);
-                    }
-
+        LinkedList<Color> randomColors = shuffledColors();
+        for (int i = 0; i < GlobalConfig.QUANTITY; i++) {
+            for (int j = 0; j < GlobalConfig.VOLUME; j++) {
+                if (i >= GlobalConfig.QUANTITY - 2) {
+                    bottles.get(i).pushColor(Color.RESET);
+                } else {
+                    bottles.get(i).pushColor(randomColors.getFirst());
                     randomColors.removeFirst();
                 }
-                else
-                {
-                    for (int j = 0; j < GlobalConfig.VOLUME; j++) {
-                        contents[i] = Color.RESET;
-                        bottle.setTopColor(Color.RESET);
-                        bottle.setTopIndex(j);
-                        bottle.setIsFull(false);
-                        bottle.setIsEmpty(true);
-                    }
-                }
+            }
+
+            if (i >= GlobalConfig.QUANTITY - 2) {
+                bottles.get(i).setTopIndex(-1);
             }
         }
     }
 
     public ArrayList<Bottle> getBottles() {
-        return this.bottles;
+        return bottles;
     }
 
     public void setBottles(ArrayList<Bottle> bottles) {
@@ -79,8 +64,19 @@ public class Bottles {
     }
 
     public void transferColor(int from, int to) {
-        if (this.bottles.get(to).pushColor(this.bottles.get(from).getTopColor())) {
-            bottles.get(from).popColor();
+        Color topColor = bottles.get(from).getTopColor();
+        while (bottles.get(from).getTopColor() == topColor) {
+
+
+            //VERIFICAR TUDO ANTES
+
+            if (bottles.get(to).isFull()) {
+                break;
+            } else {
+                if (bottles.get(to).pushColor(this.bottles.get(from).getTopColor())) {
+                    bottles.get(from).popColor();
+                }
+            }
         }
     }
 }
